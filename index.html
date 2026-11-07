@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday! 🐱🎂</title>
+  <style>
+    :root {
+      --bg-color: #a8d5ba;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      color: #1a3c27;
+    }
+
+    .container {
+      position: relative;
+      padding: 20px;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    /* Video Player Container */
+    .video-wrapper {
+      position: relative;
+      width: 320px;
+      max-width: 100%;
+      margin: 0 auto 30px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+    }
+
+    /* Buttons */
+    .btn-container {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    button {
+      background-color: #222222;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background-color: #333333;
+    }
+
+    /* Floating Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 40px;
+      height: 50px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      animation: floatUp 6s linear infinite;
+      z-index: 10;
+      opacity: 0.8;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 19px;
+      width: 2px;
+      height: 15px;
+      background: #555; 
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(20deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Happy Birthday faith ! 🎉</h1>
+    <p class="subtitle">Enjoy your special day(missu)! 🐱🎂</p>
+
+    <!-- Video Element -->
+    <div class="video-wrapper">
+      <video id="bgVideo" autoplay loop muted playsinline controls>
+        <source src="birthdaysparkle1995_pindown.io_1794046041.mp4" type="video/mp4" />
+        Browser does not support video tag.
+      </video>
+    </div>
+
+    <div class="btn-container">
+      <button onclick="toggleAudio()">🔊 Unmute / Mute Audio</button>
+      <button onclick="releaseBalloons()">🎈 Celebrate!</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleAudio() {
+      const video = document.getElementById('bgVideo');
+      video.muted = !video.muted;
+    }
+
+    function releaseBalloons() {
+      const colors = ['#ff7675', '#74b9ff', '#ffeaa7', '#55efc4', '#a29bfe'];
+      for (let i = 0; i < 15; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.left = Math.random() * 90 + 'vw';
+        balloon.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        balloon.style.animationDelay = (Math.random() * 2) + 's';
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+          balloon.remove();
+        }, 7000);
+      }
+    }
+  </script>
+</body>
+</html>
